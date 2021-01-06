@@ -1,0 +1,15 @@
+.DS_Store
+
+build/
+
+test.tar.gz
+test/
+
+bundle.tar.gz
+bundle/
+
+save/
+
+# demo directories
+cfg/
+eds/

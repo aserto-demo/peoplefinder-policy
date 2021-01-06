@@ -1,0 +1,28 @@
+on:
+  push:
+    tags:
+    - '*'
+
+jobs:
+  test_action_job:
+    runs-on: ubuntu-latest
+    name: build
+    steps:
+    
+    - uses: actions/checkout@v2
+
+    - name: build-bundle 
+      id: opa-build
+      uses: aserto-dev/opa-build-action@v1
+      with:
+        source: "src"
+        target: "build/bundle.tar.gz"
+        options: "--revision $GITHUB_SHA"
+
+    - name: upload
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "build/bundle.tar.gz"
+        token: ${{ secrets.GITHUB_TOKEN }}
+        name: "Aserto OPA bundle release"
+        omitBody: true
