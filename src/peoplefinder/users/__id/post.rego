@@ -5,12 +5,7 @@ default visible = true
 default enabled = false
 
 allowed {
-    u = input.user
-    u.attr.department == "Operations"
-}
-
-visible {
-    allowed
+    input.user.attr.department == "Operations"
 }
 
 enabled {
