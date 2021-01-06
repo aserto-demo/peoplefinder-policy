@@ -2,7 +2,7 @@
 
 echo $GIT_TOKEN | docker login ghcr.io -u $USERNAME --password-stdin
 
-docker pull ghcr.io/aserto-dev/aserto-one:0.0.6
+docker pull ghcr.io/aserto-dev/aserto-one:0.0.16
 
 docker run -ti --rm --name aserto-one \
 -p 8181:8181 \
@@ -12,7 +12,7 @@ docker run -ti --rm --name aserto-one \
 -v $(PWD)/cfg:/app/cfg:ro \
 -v $(PWD)/eds:/app/eds:rw \
 -v $(PWD)/src:/app/src:rw \
-ghcr.io/aserto-dev/aserto-one:0.0.6 \
+ghcr.io/aserto-dev/aserto-one:0.0.16 \
 run -s -c ./cfg/local.yaml -b ./src -w
 
 
@@ -26,6 +26,6 @@ docker run -d --rm --name aserto-one \
 -p 8484:8484 \
 -v $(PWD)/cfg:/app/cfg:ro \
 -v $(PWD)/eds:/app/eds:rw \
-ghcr.io/aserto-dev/aserto-one:0.0.6 \
+ghcr.io/aserto-dev/aserto-one:0.0.16 \
 run -s -c ./cfg/config.yaml
 

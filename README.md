@@ -1,24 +1,22 @@
-# mycars
-MyCars demo
+# peoplefinder-policy
+
+Policy for PeopleFinder demo
 
 ## default 
 
     default allow = false
 
-## mycars.get.rego
+## peoplefinder.users.get.rego
 
     allow {
         input.method == "GET"
         input.user == "kaia@acmecorp.com"
     }
 
-
-## mycars.car.get.rego
-
+## peoplefinder.users.__id.put.rego
 
     allow {
-        i = data.data.identities[input.user]
-        u = data.data.users[i]
+        u = input.user
         u.attr.enabled == "True"
         u.attr.department == "Sales Engagement Management"
     }
