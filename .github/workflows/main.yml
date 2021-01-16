@@ -13,7 +13,7 @@ jobs:
 
     - name: build-bundle 
       id: opa-build
-      uses: aserto-dev/opa-build-action@v1
+      uses: aserto-dev/opa-build-action@v2
       with:
         source: "src"
         target: "build/bundle.tar.gz"

@@ -12,10 +12,10 @@ all: build
 .PHONY: build
 build: $(BUILD_DIR)
 	@echo -e "==> $@"
-	@cd $(SRC_DIR)
-	@ulimit -S -n 2048
-	opa build . --bundle --output $(BUILD_DIR)/bundle.tar.gz $(BUILD_OPT)
-	@cd $(ROOT_DIR)
+	ulimit -S -n 2048
+	cd $(SRC_DIR) && \
+	opa build . --bundle --output $(BUILD_DIR)/bundle.tar.gz $(BUILD_OPT) && \
+	cd $(ROOT_DIR)
 
 $(BUILD_DIR):
 	@echo -e "==> create BUILD_DIR $(BUILD_DIR)"
