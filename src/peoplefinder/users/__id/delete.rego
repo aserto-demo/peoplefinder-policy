@@ -1,4 +1,4 @@
-package peoplefinder.users.__id.delete
+package peoplefinder.DELETE.users.__id
 
 default allowed = false
 default visible = false

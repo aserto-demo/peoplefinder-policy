@@ -1,4 +1,4 @@
-package peoplefinder.users.post
+package peoplefinder.POST.users
 
 default allowed = false
 default visible = false
