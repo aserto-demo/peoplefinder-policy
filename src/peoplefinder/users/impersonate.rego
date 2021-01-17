@@ -1,4 +1,4 @@
-package peoplefinder.api.users.__id.IMPERSONATE
+package peoplefinder.IMPERSONATE.api.users.__id
 
 default allowed = false
 default visible = false
