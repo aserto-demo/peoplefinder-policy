@@ -12,7 +12,6 @@ allowed {
     dir.is_manager_of(input.user.id, input.resource)
 }
 
-
 enabled {
     allowed
 }
