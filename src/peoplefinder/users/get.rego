@@ -1,4 +1,4 @@
-package peoplefinder.GET.api.users
+package peoplefinder.GET.users
 
 default allowed = true
 default visible = true

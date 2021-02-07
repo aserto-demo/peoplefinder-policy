@@ -1,4 +1,4 @@
-package peoplefinder.PUT.api.users.__id
+package peoplefinder.PUT.users.__id
 
 default allowed = false
 default visible = true
