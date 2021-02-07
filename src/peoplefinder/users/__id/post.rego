@@ -1,4 +1,4 @@
-package peoplefinder.POST.users.__id
+package peoplefinder.POST.api.users.__id
 
 default allowed = false
 default visible = true
