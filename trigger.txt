@@ -1,1 +1,1 @@
-release v0.0.24
+release v0.0.25
