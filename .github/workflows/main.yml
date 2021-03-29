@@ -11,7 +11,7 @@ jobs:
     
     - uses: actions/checkout@v2
 
-    - name: build-bundle 
+    - name: Build policy
       id: aserto-build
       uses: aserto-dev/aserto-build-action@v1-beta
       with:
@@ -19,7 +19,12 @@ jobs:
         target: "build/bundle.tar.gz"
         options: "--revision $GITHUB_SHA"
 
-    - name: draft_release
+    - name: Read Tag
+      id: get_tag
+      run: echo ::set-output name=tag::${GITHUB_REF#refs/tags/}
+
+    - name: Draft Release
+      id: draft_release
       uses: release-drafter/release-drafter@v5
       with:
         name: "${{ github.ref }}"
@@ -27,14 +32,16 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: upload_assets
+    - name: Upload Assets
+      id: upload_assets
       uses: AButler/upload-release-assets@v2.0
       with:
-        release-tag: ${{ github.ref }}
+        release-tag: ${{ steps.get_tag.outputs.tag }}
         files: 'build/bundle.tar.gz'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: publish_release
+    - name: Publish Release
+      id: publish_release
       uses: eregon/publish-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
