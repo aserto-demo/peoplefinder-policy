@@ -27,7 +27,7 @@ jobs:
       id: draft_release
       uses: release-drafter/release-drafter@v5
       with:
-        name: "${{ github.ref }}"
+        name: "${{ steps.get_tag.outputs.tag }}"
         tag: ${{ github.ref }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
