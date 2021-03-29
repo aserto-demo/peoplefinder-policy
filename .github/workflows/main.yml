@@ -19,21 +19,13 @@ jobs:
         target: "build/bundle.tar.gz"
         options: "--revision $GITHUB_SHA"
 
-    - name: Draft Release
-      id: draft_release
+    - name: Release
+      id: release
       uses: xresloader/upload-to-github-release@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         file: "build/bundle.tar.gz"
         tags: true
-        draft: true
+        draft: false
         verbose: true
-
-    - name: Publish Release
-      id: publish_release
-      uses: eregon/publish-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        release_id: ${{ steps.draft_release.outputs.release_id }}
