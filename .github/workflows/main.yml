@@ -19,10 +19,24 @@ jobs:
         target: "build/bundle.tar.gz"
         options: "--revision $GITHUB_SHA"
 
-    - name: upload
-      uses: ncipollo/release-action@v1
+    - name: draft_release
+      uses: release-drafter/release-drafter@v5
       with:
-        artifacts: "build/bundle.tar.gz"
-        token: ${{ secrets.GITHUB_TOKEN }}
-        name: "Aserto bundle release"
-        omitBody: true
+        name: "${{ github.ref }}"
+        tag: ${{ github.ref }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: upload_assets
+      uses: AButler/upload-release-assets@v2.0
+      with:
+        release-tag: ${{ github.ref }}
+        files: 'build/bundle.tar.gz'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: publish_release
+      uses: eregon/publish-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        release_id: ${{ steps.create_release.outputs.id }}
