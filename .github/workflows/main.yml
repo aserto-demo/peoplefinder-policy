@@ -19,26 +19,16 @@ jobs:
         target: "build/bundle.tar.gz"
         options: "--revision $GITHUB_SHA"
 
-    - name: Read Tag
-      id: get_tag
-      run: echo ::set-output name=tag::${GITHUB_REF#refs/tags/}
-
     - name: Draft Release
       id: draft_release
-      uses: release-drafter/release-drafter@v5
-      with:
-        name: "${{ steps.get_tag.outputs.tag }}"
-        tag: ${{ github.ref }}
+      uses: xresloader/upload-to-github-release@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Upload Assets
-      id: upload_assets
-      uses: AButler/upload-release-assets@v2.0
       with:
-        release-tag: ${{ steps.get_tag.outputs.tag }}
-        files: 'build/bundle.tar.gz'
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        file: "build/bundle.tar.gz"
+        tags: true
+        draft: true
+        verbose: true
 
     - name: Publish Release
       id: publish_release
@@ -46,4 +36,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        release_id: ${{ steps.create_release.outputs.id }}
+        release_id: ${{ steps.draft_release.outputs.release_id }}

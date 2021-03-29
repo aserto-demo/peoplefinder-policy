@@ -4,6 +4,7 @@
     "TLSCA",
     "Wrapf",
     "eregon",
-    "softprops"
+    "softprops",
+    "xresloader"
   ]
 }
