@@ -17,6 +17,6 @@ Policy for PeopleFinder demo
 
     allow {
         u = input.user
-        u.attr.enabled == "True"
-        u.attr.department == "Sales Engagement Management"
+        u.enabled == true
+        u.attributes.properties.department == "Sales Engagement Management"
     }

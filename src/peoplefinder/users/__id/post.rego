@@ -5,7 +5,7 @@ default visible = true
 default enabled = false
 
 allowed {
-    input.user.attr.department == "Operations"
+    input.user.attributes.properties.department == "Operations"
 }
 
 enabled {

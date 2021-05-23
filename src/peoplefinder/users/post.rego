@@ -6,8 +6,8 @@ default enabled = false
 
 allowed {
     u = input.user
-    u.attr.department == "Operations"
-    u.attr.title == "IT Manager"
+    u.attributes.properties.department == "Operations"
+    u.attributes.properties.title == "IT Manager"
 }
 
 visible {
