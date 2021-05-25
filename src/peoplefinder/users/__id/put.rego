@@ -5,9 +5,9 @@ default visible = true
 default enabled = true
 
 allowed {
-    input.user.attr.department == "Operations"
+    input.user.attributes.properties.department == "Operations"
 }
 
 allowed {
-    input.user.id == input.resource
+    input.user.id == input.resource.id
 }
