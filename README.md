@@ -2,7 +2,7 @@
 
 Policy for PeopleFinder demo
 
-## default 
+## default
 
     default allow = false
 
@@ -18,5 +18,5 @@ Policy for PeopleFinder demo
     allow {
         u = input.user
         u.enabled == true
-        u.attributes.properties.department == "Sales Engagement Management"
+        u.properties.department == "Sales Engagement Management"
     }
