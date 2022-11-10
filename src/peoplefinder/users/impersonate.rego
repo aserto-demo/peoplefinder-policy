@@ -6,13 +6,13 @@ default enabled = false
 
 allowed {
     u = input.user
-    u.attributes.properties.department == "Operations"
-    u.attributes.properties.title == "IT Manager"
+    u.properties.department == "Operations"
+    u.properties.title == "IT Manager"
 }
 
 visible {
     u = input.user
-    u.attributes.properties.department == "Operations"
+    u.properties.department == "Operations"
 }
 
 enabled {
